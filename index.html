@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Starry Night</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body>
+    <div class="scene">
+      <div class="moon" onclick="toggleScene()"></div>
+      <img
+        class="forest"
+        src="forest.png"
+        alt="black outline of trees in a row"
+      />
+      <img
+        class="bg"
+        src="bg.png"
+        alt="black outline of a family holding hands"
+      />
+      <img src="cloud1.png" alt="an image of a cloud" class="cloud1">
+      <img src="cloud2.png" alt="second image of a cloud" class="cloud2">
+      <img src="cloud3.png" alt="third image of a cloud" class="cloud3">
+    </div>
+
+    <script>
+
+      function toggleScene() {
+        let change = document.querySelector(".scene");
+        change.classList.toggle("active")
+      }
+
+      function stars() {
+        let count=550;
+        let i=0;
+        let scene = document.querySelector(".scene")
+        while (i<count) {
+          let star = document.createElement("i");
+          let x = Math.floor(Math.random()*window.innerWidth)
+          let y = Math.floor(Math.random()*(window.innerHeight-250))
+
+          let size = Math.random()*2
+
+          let duration = Math.random()*10;
+
+
+
+          star.style.left = x + "px"
+          star.style.top = y + "px"
+          star.style.height = size + "px";
+          star.style.width = size + "px";
+
+          star.style.animationDuration = 5+ duration + "s";
+          star.style.animationDelay = duration + "s";
+
+          scene.appendChild(star);
+          i++;
+        }
+      }
+      stars();
+    </script>
+  </body>
+</html>
